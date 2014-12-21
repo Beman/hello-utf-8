@@ -4,10 +4,95 @@
 <meta name="GENERATOR" content="Microsoft FrontPage 5.0">
 <meta name="ProgId" content="FrontPage.Editor.Document">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+body
+{
+  font-family: sans-serif;
+  max-width: 6.5in;
+  font-size: 85%;
+}
+ ins  {background-color: #CCFFCC;}
+ del  {background-color: #FFCACA;}
+ pre  {background-color: #D7EEFF; font-size: 100%;}
+ code {font-size: 110%;}
+ table{font-size: 100%;}
+</style>
 <title>Hello UTF-8</title>
 </head>
 
 <body>
+
+<h1>UTF-8 and command lines</h1>
+
+<h2>Test file</h2>
+
+<p>The test file contains three lines:</p>
+<blockquote>
+<pre>Hello world
+你好世界
+😊😎</pre>
+</blockquote>
+
+<p>Here is the C++03 program that generated it:</p>
+<blockquote>
+  <pre>#include &lt;iostream&gt;
+
+int main()
+{
+  std::cout &lt;&lt; &quot;Hello world&quot; &lt;&lt; std::endl;
+
+  //  Traditional Chinese
+  //  U+4f60  Han Character &#39;you, second person pronoun&#39;
+  //  U+597D  Han Character &#39;good, excellent, fine; well&#39;
+  //  U+4E16  Han Character &#39;generation; world; era&#39;
+  //  U+754C  Han Character &#39;boundary, limit; domain; society; the world&#39;
+  //
+  //  Output as UTF-8:
+  std::cout &lt;&lt; &quot;\xE4\xBD\xA0&quot; &quot;\xE5\xA5\xBD&quot; &quot;\xE4\xB8\x96&quot; &quot;\xE7\x95\x8C&quot; &lt;&lt; std::endl;
+
+  //  Test cases above the BMP
+  //  U+1F60A SMILING FACE WITH SMILING EYES
+  //  U+1F60E SMILING FACE WITH SUNGLASSES
+  //
+  //  Output as UTF-8
+  std::cout &lt;&lt; &quot;\xF0\x9F\x98\x8A&quot; &quot;\xF0\x9F\x98\x8E&quot; &lt;&lt; std::endl;
+}
+</pre>
+</blockquote>
+
+<p>Here&#39;s a hex dump of the  file:</p>
+<blockquote>
+<pre>000000: 48 65 6C 6C 6F 20 77 6F  72 6C 64 0D 0A E4 BD A0 Hello world.....
+000010: E5 A5 BD E4 B8 96 E7 95  8C 0D 0A F0 9F 98 8A F0 ................
+000020: 9F 98 8E 0D 0A 00 00 00  00 00 00 00 00 00 00 00 ................</pre>
+</blockquote>
+<p>According to Google Translate, &quot;你好世界&quot; is &quot;Hello world&quot; in traditional 
+Chinese, so it is an appropriate UTF-8 test for the
+<a href="http://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane">
+Basic Multilingual Plane (BMP)</a>. </p>
+<p>The smiling faces, &quot;😊😎&quot; are chosen to test the
+<a href="http://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane">
+Supplementary Multilingual Plane (SMP)</a>. See&nbsp; <a href="http://en.wikipedia.org/wiki/Emoticons_(Unicode_block)">
+Wikipedia - Unicode Emoticons</a>.</p>
+<p>The are not tests for the
+<a href="http://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Ideographic_Plane">
+Supplementary Ideographic Plane (SIP)</a><b>.</b> </p>
+<h2>Tests results</h2>
+<h3>Linux</h3>
+<p><img border="0" src="ubuntu-1004.png" width="525" height="223"></p>
+<h3>OS X</h3>
+<table>
+<p><img border="0" src="OS-X-10.10.png" width="556" height="162"></p>
+</table>
+<h3>Windows 10 Technical Preview build 9879</h3>
+<p><img border="0" src="win10prev-command-line.png" width="1072" height="630"></p>
+<hr>
+<p>Last modified:
+<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%d %B %Y" startspan -->21 December 2014<!--webbot bot="Timestamp" endspan i-checksum="39160" --></p>
+<p>© Copyright Beman Dawes 2014</p>
+<p>All files in this repository are distributed under the Boost Software 
+License, Version 1.0. See <a href="http://www.boost.org/LICENSE_1_0.txt">
+www.boost.org/LICENSE_1_0.txt</a></p>
 
 </body>
 
