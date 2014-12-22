@@ -74,21 +74,28 @@ Basic Multilingual Plane (BMP)</a>. </p>
 <a href="http://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane">
 Supplementary Multilingual Plane (SMP)</a>. See&nbsp; <a href="http://en.wikipedia.org/wiki/Emoticons_(Unicode_block)">
 Wikipedia - Unicode Emoticons</a>.</p>
-<p>The are not tests for the
+<p>I haven&#39;t yet added test cases for the
 <a href="http://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Ideographic_Plane">
-Supplementary Ideographic Plane (SIP)</a><b>.</b> </p>
+Supplementary Ideographic Plane (SIP)</a>.</p>
 <h2>Tests results</h2>
 <h3>Linux</h3>
+<p>Command line (i.e. bash) works fine:</p>
 <p><img border="0" src="ubuntu-1004.png" width="525" height="223"></p>
 <h3>OS X</h3>
-<table>
-<p><img border="0" src="OS-X-10.10.png" width="556" height="162"></p>
+<p>Command line (i.e. bash) works fine:</p>
+<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+<tr><td><img border="0" src="OS-X-10.10.png" width="365" height="109"></td></tr>
 </table>
 <h3>Windows 10 Technical Preview build 9879</h3>
-<p><img border="0" src="win10prev-command-line.png" width="1072" height="630"></p>
+<p>Command prompt with the font set to Consolas fails:</p>
+<p><img border="0" src="win10prev-command-line.png" width="445" height="244"></p>
+<p>Grrrr! Fails both the BMP and SMP test cases!</p>
+<p>The fault isn&#39;t with the Consolas font, since Notepad works just fine using 
+that font:</p>
+<p><img border="0" src="win10prev-notepad.png" width="417" height="150"></p>
 <hr>
 <p>Last modified:
-<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%d %B %Y" startspan -->21 December 2014<!--webbot bot="Timestamp" endspan i-checksum="39160" --></p>
+<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%d %B %Y" startspan -->22 December 2014<!--webbot bot="Timestamp" endspan i-checksum="39162" --></p>
 <p>© Copyright Beman Dawes 2014</p>
 <p>All files in this repository are distributed under the Boost Software 
 License, Version 1.0. See <a href="http://www.boost.org/LICENSE_1_0.txt">
